@@ -2,10 +2,10 @@ package com.huaisui.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.huaisui.service.UserService;
+import com.huaisui.utils.myUrlUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,7 +25,7 @@ public class LoginController {
             HttpSession session = request.getSession();
             session.setAttribute("userid",userid);
             response.setHeader("redirect","redirect");
-            response.setHeader("redirectPath","http://localhost:8080/upload");
+            response.setHeader("redirectPath", myUrlUtils.myURL+"/upload");
         }else {
             System.out.println("error");
         }
