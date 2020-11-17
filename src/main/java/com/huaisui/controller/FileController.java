@@ -3,6 +3,7 @@ package com.huaisui.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.huaisui.service.ArticlesInfoService;
 import com.huaisui.utils.MyBlogUtils;
+import com.huaisui.utils.myUrlUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,8 +19,6 @@ import java.util.Date;
 
 @RestController
 public class FileController {
-    static String UPLOADED_FOLDER = "C:\\Users\\49868\\Desktop\\Upload\\";
-
     //上传图片
     @PostMapping("/postpic")
     public JSONObject postPic(
@@ -30,7 +29,7 @@ public class FileController {
         JSONObject jsonObject = new JSONObject();
         try {
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER+FileName);
+            Path path = Paths.get(myUrlUtils.UPLOADED_FOLDER+FileName);
             Files.write(path, bytes);
         } catch (Exception e) {
             jsonObject.put("success", 0);
@@ -52,7 +51,7 @@ public class FileController {
         String title = object.getString("title");
         try{
             byte[] bytes = content.getBytes();
-            Path path = Paths.get(UPLOADED_FOLDER + title + ".md");
+            Path path = Paths.get(myUrlUtils.UPLOADED_FOLDER + title + ".md");
             Files.write(path,bytes);
         }catch (Exception e){
             e.printStackTrace();

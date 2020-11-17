@@ -1,11 +1,9 @@
 package com.huaisui.demo;
 
-import com.huaisui.controller.LoginController;
 import com.huaisui.dao.ArticleMapper;
 import com.huaisui.pojo.Article;
 import com.huaisui.service.ArticlesInfoService;
 import com.huaisui.service.UserService;
-import com.huaisui.utils.MarkdownUtils;
 import com.huaisui.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
