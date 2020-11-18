@@ -1,7 +1,7 @@
 package com.huaisui.service;
 
 import com.huaisui.dao.ArticleMapper;
-import com.huaisui.pojo.Article;
+import com.huaisui.pojo.article;
 import com.huaisui.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 
@@ -11,7 +11,7 @@ public class ArticlesInfoService implements IArticleInfoService{
     @Override
     public List getArticlesInfo(int start,int end) {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
-        List<Article> articles = null;
+        List<article> articles = null;
         try{
             ArticleMapper mapper = sqlSession.getMapper(ArticleMapper.class);
             articles = mapper.getArticles(start,end);

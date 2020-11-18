@@ -1,15 +1,13 @@
 package com.huaisui.pojo;
 
-/*
-* id命名方式 : System.currentTimeMillis()+title.hashcode
-* */
-public class Article {
+
+public class article {
     private String article_id;
     private String article_title;
     private String post_date;
     private String author;
 
-    public Article(String article_id, String article_title, String post_date, String author) {
+    public article(String article_id, String article_title, String post_date, String author) {
         this.article_id = article_id;
         this.article_title = article_title;
         this.post_date = post_date;

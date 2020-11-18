@@ -1,8 +1,9 @@
 package com.huaisui.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.huaisui.pojo.Article;
+import com.huaisui.pojo.article;
 import com.huaisui.service.ArticlesInfoService;
+import com.huaisui.utils.myUrlUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,20 +41,20 @@ public class ArticleInfoController {
             return "redirect:/";
         }
         System.out.println("page = "+page+", start = "+start+", end = "+end);
-        List<Article> articles = service.getArticlesInfo(start,end);
+        List<article> articles = service.getArticlesInfo(start,end);
         return articles;
     }
 
     @GetMapping("/getarticle")
     public @ResponseBody JSONObject getArticle(@RequestParam(value = "id") String id){
         String content = null;
-        File file = new File("C:\\Users\\49868\\Desktop\\Upload\\"+id+".md");
+        File file = new File(myUrlUtils.UPLOADED_FOLDER+id+".md");
         if (!file.exists()){
             System.out.println("file dont exists!");
 
         }
         try{
-            Stream<String> lines = Files.lines(Paths.get("C:\\Users\\49868\\Desktop\\Upload\\"+id+".md"));
+            Stream<String> lines = Files.lines(Paths.get(myUrlUtils.UPLOADED_FOLDER+id+".md"));
             content = lines.collect(Collectors.joining(System.lineSeparator()));
             String title = id;
             JSONObject object = new JSONObject();

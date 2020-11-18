@@ -13,5 +13,4 @@ public class ErrorInterceptor implements HandlerInterceptor {
             response.sendRedirect("/errorpage");
         }
     }
-
 }
